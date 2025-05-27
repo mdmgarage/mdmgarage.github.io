@@ -6,93 +6,92 @@
 <title>MDMGARAGE</title>
 <style>
 @font-face {
-	font-family: 'SF Pro Display';
-	src: local('SF Pro Display'),
-	url('https://sf.abarba.me/SF-Pro-Display-Regular.woff2') format('woff2');
-	font-weight: normal;
-	font-style: normal;
+font-family: 'SF Pro Display';
+src: local('SF Pro Display'),
+url('https://sf.abarba.me/SF-Pro-Display-Regular.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
 }
 
 body {
-	margin: 0;
-	height: 100vh;
-	background-color: white;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	position: relative;
+margin: 0;
+height: 100vh;
+background-color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+position: relative;
 }
 
 .title {
-	font-size: 4rem;
-	display: flex;
-	gap: 0.5rem;
-	cursor: default;
+font-size: 4rem;
+display: flex;
+gap: 0.5rem;
+cursor: default;
 }
 
 .letter {
-	display: inline-block;
-	transition: transform 0.2s ease, color 0.2s ease;
+display: inline-block;
+transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .letter:hover {
-	transform: translateY(-10px);
-	color: #007aff;
+transform: translateY(-10px);
+color: #007aff;
 }
 
 .contact-toggle {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	border: 2px solid black;
-	background: white;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 36px;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-	transition: transform 0.4s ease;
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+border: 2px solid black;
+background: white;
+font-size: 20px;
+font-weight: bold;
+line-height: 36px;
+text-align: center;
+cursor: pointer;
+user-select: none;
+font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+transition: transform 0.4s ease;
 }
 
 .rotate-once {
-	animation: rotateOnce 0.4s linear;
+animation: rotateOnce 0.4s linear;
 }
 
 @keyframes rotateOnce {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+}
 }
 
 .contact-info {
-	position: absolute;
-	top: 70px;
-	right: 20px;
-	background-color: white;
-	border: 1px solid #ccc;
-	padding: 10px;
-	display: none;
-	font-size: 16px;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+position: absolute;
+top: 70px;
+right: 20px;
+background-color: white;
+border: 1px solid #ccc;
+padding: 10px;
+display: none;
+font-size: 16px;
+align-items: center;
+gap: 10px;
+font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .contact-info svg {
-	width: 20px;
-	height: 20px;
-	stroke: black;
+width: 20px;
+height: 20px;
+stroke: black;
 }
 </style>
 </head>
@@ -115,28 +114,28 @@ const word = "MDMGARAGE";
 const container = document.getElementById("mdmTitle");
 
 word.split("").forEach((char, index) => {
-			const span = document.createElement("span");
-			span.classList.add("letter");
-			span.textContent = char;
-			container.appendChild(span);
-		});
+const span = document.createElement("span");
+span.classList.add("letter");
+span.textContent = char;
+container.appendChild(span);
+});
 
-		function toggleContact() {
-			const contactBox = document.getElementById("contactInfo");
-			const button = document.getElementById("contactToggle");
+function toggleContact() {
+const contactBox = document.getElementById("contactInfo");
+const button = document.getElementById("contactToggle");
 
-			const isOpen = contactBox.style.display === "block";
+const isOpen = contactBox.style.display === "flex";
 
-			if (isOpen) {
-				contactBox.style.display = "none";
-				button.textContent = "i";
-			} else {
-				contactBox.style.display = "block";
-				button.textContent = "+";
-				button.classList.add("rotate-once");
-				setTimeout(() => button.classList.remove("rotate-once"), 400);
-			}
-		}
-	</script>
+if (isOpen) {
+contactBox.style.display = "none";
+button.textContent = "i";
+} else {
+contactBox.style.display = "flex";
+button.textContent = "+";
+button.classList.add("rotate-once");
+setTimeout(() => button.classList.remove("rotate-once"), 400);
+}
+}
+</script>
 </body>
 </html>
