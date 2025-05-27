@@ -1,16 +1,142 @@
-<div class="w3-container w3-teal">  
-<p style="margin-top: 50px;"></p>
-<h1>MDMGARAGE</h1>
-</div>
-<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MDMGARAGE</title>
+<style>
+@font-face {
+	font-family: 'SF Pro Display';
+	src: local('SF Pro Display'),
+	url('https://sf.abarba.me/SF-Pro-Display-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
 
+body {
+	margin: 0;
+	height: 100vh;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	position: relative;
+}
 
-<div class="w3-container w3-teal">
-  <p>ABOUT</p>
-  <p>Helping organisations succeed with Apple</p>
+.title {
+	font-size: 4rem;
+	display: flex;
+	gap: 0.5rem;
+	cursor: default;
+}
+
+.letter {
+	display: inline-block;
+	transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.letter:hover {
+	transform: translateY(-10px);
+	color: #007aff;
+}
+
+.contact-toggle {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 2px solid black;
+	background: white;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 36px;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	transition: transform 0.4s ease;
+}
+
+.rotate-once {
+	animation: rotateOnce 0.4s linear;
+}
+
+@keyframes rotateOnce {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.contact-info {
+	position: absolute;
+	top: 70px;
+	right: 20px;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	display: none;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.contact-info svg {
+	width: 20px;
+	height: 20px;
+	stroke: black;
+}
+</style>
+</head>
+<body>
+<div class="contact-toggle" id="contactToggle" onclick="toggleContact()">i</div>
+<div class="contact-info" id="contactInfo">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4V4z" />
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l8 8 8-8" />
+</svg>
+<span>admin@mdmgarage.com</span>
 </div>
-<br>
-<div class="w3-container w3-teal">
-  <p>CONTACT</p>
-  <a href="mailto:admin@mdmgarage.com">admin@mdmgarage.com</a>
+
+<div class="title" id="mdmTitle">
+<!-- Letters will be injected by JavaScript -->
 </div>
+
+<script>
+const word = "MDMGARAGE";
+const container = document.getElementById("mdmTitle");
+
+word.split("").forEach((char, index) => {
+			const span = document.createElement("span");
+			span.classList.add("letter");
+			span.textContent = char;
+			container.appendChild(span);
+		});
+
+		function toggleContact() {
+			const contactBox = document.getElementById("contactInfo");
+			const button = document.getElementById("contactToggle");
+
+			const isOpen = contactBox.style.display === "block";
+
+			if (isOpen) {
+				contactBox.style.display = "none";
+				button.textContent = "i";
+			} else {
+				contactBox.style.display = "block";
+				button.textContent = "+";
+				button.classList.add("rotate-once");
+				setTimeout(() => button.classList.remove("rotate-once"), 400);
+			}
+		}
+	</script>
+</body>
+</html>
